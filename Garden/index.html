@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriFresh Market delivers fresh farm vegetables, fruits, spices, grains, oil seeds, and pulses directly to your home.">
+  <title>AgriFresh Market | Fresh Farm Products Online</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="brand rrrivo-brand" aria-label="RRRIVO Global Trade home">
+        <img class="brand-logo" src="assets/rrrivo-logo.svg" alt="RRRIVO Global Trade">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <span class="eyebrow">Trusted farm marketplace</span>
+        <h1 id="hero-title">Fresh From Farm To Your Home</h1>
+        <p>Shop clean, seasonal produce sourced from farmers and delivered with care across your neighborhood.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#products">Shop Products</a>
+          <a class="btn ghost" href="#categories">Explore Categories</a>
+        </div>
+        <div class="hero-stats" aria-label="Marketplace highlights">
+          <span><strong>500+</strong> farm items</span>
+          <span><strong>24h</strong> fresh dispatch</span>
+          <span><strong>4.9</strong> customer rating</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured" aria-labelledby="featured-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Handpicked today</span>
+        <h2 id="featured-title">Featured Products</h2>
+        <p>Premium farm essentials with transparent prices, ratings, and quick actions.</p>
+      </div>
+      <div class="featured-strip reveal">
+        <article class="feature-card">
+          <img class="js-real-photo" src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=80" data-photo-page="Tomato" alt="Fresh red tomatoes">
+          <div>
+            <span>Best Seller</span>
+            <h3>Farm Tomato</h3>
+            <p>Rs. 42 / kg</p>
+          </div>
+        </article>
+        <article class="feature-card">
+          <img class="js-real-photo" src="https://images.unsplash.com/photo-1605027990121-cbae9e0642df?auto=format&fit=crop&w=900&q=80" data-photo-page="Mango" alt="Fresh mangoes">
+          <div>
+            <span>Seasonal</span>
+            <h3>Alphonso Mango</h3>
+            <p>Rs. 180 / kg</p>
+          </div>
+        </article>
+        <article class="feature-card">
+          <img class="js-real-photo" src="https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&w=900&q=80" data-photo-page="Cabbage" alt="Fresh green cabbage">
+          <div>
+            <span>Organic Pick</span>
+            <h3>Green Cabbage</h3>
+            <p>Rs. 36 / kg</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section products-section" id="products" aria-labelledby="products-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Shop by need</span>
+        <h2 id="products-title">Fresh Farm Products</h2>
+        <p>Filter products by category and subcategory.</p>
+      </div>
+
+      <div class="shop-toolbar reveal" aria-label="Product filters">
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+        </select>
+        <select id="subcategoryFilter" aria-label="Filter by subcategory">
+          <option value="all">All Subcategories</option>
+        </select>
+      </div>
+
+      <div class="category-dropdowns reveal" id="categoryDropdowns" aria-label="Product category subsections"></div>
+      <div class="product-grid reveal" id="productGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="section categories" id="categories" aria-labelledby="categories-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Marketplace aisles</span>
+        <h2 id="categories-title">Categories</h2>
+        <p>Everything your kitchen needs, organized for quick browsing.</p>
+      </div>
+      <div class="category-grid reveal">
+        <article><span>01</span><h3>Vegetables</h3><p>Daily fresh greens and staples.</p></article>
+        <article><span>02</span><h3>Fruits</h3><p>Seasonal sweetness from trusted farms.</p></article>
+        <article><span>03</span><h3>Spices</h3><p>Aromatic essentials for every recipe.</p></article>
+        <article><span>04</span><h3>Food Grains</h3><p>Rice, wheat, millets, and maize.</p></article>
+        <article><span>05</span><h3>Oil Seeds</h3><p>Clean seeds for cooking and wellness.</p></article>
+        <article><span>06</span><h3>Pulses</h3><p>Protein-rich dals for daily meals.</p></article>
+      </div>
+    </section>
+
+    <section class="section why" aria-labelledby="why-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Why choose us</span>
+        <h2 id="why-title">Freshness You Can Trust</h2>
+      </div>
+      <div class="why-grid reveal">
+        <article>
+          <span class="icon">✓</span>
+          <h3>Farm Verified</h3>
+          <p>Products are sourced from vetted growers and quality checked before dispatch.</p>
+        </article>
+        <article>
+          <span class="icon">↻</span>
+          <h3>Fast Delivery</h3>
+          <p>Optimized local fulfillment keeps produce crisp, bright, and ready to cook.</p>
+        </article>
+        <article>
+          <span class="icon">★</span>
+          <h3>Fair Pricing</h3>
+          <p>Transparent rates help customers buy better while supporting farming partners.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reviews" aria-labelledby="reviews-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Customer reviews</span>
+        <h2 id="reviews-title">Loved by Fresh Food Families</h2>
+      </div>
+      <div class="review-grid reveal">
+        <article>
+          <div class="stars">★★★★★</div>
+          <p>"The vegetables arrived clean, firm, and neatly packed. It feels like buying directly from a farm stand."</p>
+          <strong>Priya S.</strong>
+        </article>
+        <article>
+          <div class="stars">★★★★★</div>
+          <p>"Good prices, quick delivery, and the fruit quality has been consistently excellent."</p>
+          <strong>Rahul M.</strong>
+        </article>
+        <article>
+          <div class="stars">★★★★☆</div>
+          <p>"The category filters make weekly grocery planning very easy. Great experience on mobile too."</p>
+          <strong>Ananya K.</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-preview" id="contact" aria-labelledby="contact-title">
+      <div class="contact-band reveal">
+        <div>
+          <span class="eyebrow">Need help ordering?</span>
+          <h2 id="contact-title">Talk to Rrrivo Global Trade</h2>
+          <p>Our support team can help with bulk orders, delivery questions, and product availability.</p>
+        </div>
+        <a class="btn primary" href="contact.html">Contact Us</a>
+      </div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter-card reveal">
+        <div>
+          <span class="eyebrow">Fresh updates</span>
+          <h2 id="newsletter-title">Subscribe for seasonal offers</h2>
+          <p>Get weekly harvest updates, offers, and new arrivals in your inbox.</p>
+        </div>
+        <form class="newsletter-form">
+          <label class="sr-only" for="newsletterEmail">Email address</label>
+          <input id="newsletterEmail" type="email" placeholder="Enter your email" required>
+          <button class="btn primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand rrrivo-brand footer-brand"><img class="brand-logo" src="assets/rrrivo-logo.svg" alt="RRRIVO Global Trade"></a>
+        <p>Premium farm products delivered fresh from growers to your home.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>+91 96369 84162</p>
+        <p>digiskymanager@gmail.com</p>
+      </div>
+      <div>
+        <h3>Social</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="X">x</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Rrrivo Global Trade. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
