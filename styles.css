@@ -515,6 +515,70 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.packaging-showcase {
+  width: min(1180px, calc(100% - 32px));
+}
+
+.packaging-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 250px;
+  gap: 16px;
+}
+
+.packaging-card {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.packaging-card-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.packaging-card-wide {
+  grid-column: span 2;
+}
+
+.packaging-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms ease;
+}
+
+.packaging-card:hover img {
+  transform: scale(1.04);
+}
+
+.packaging-card div {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 48px 18px 18px;
+  color: var(--white);
+  background: linear-gradient(0deg, rgba(7, 32, 22, 0.92), rgba(7, 32, 22, 0));
+}
+
+.packaging-card strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.packaging-card p {
+  max-width: 360px;
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .feature-card,
 .product-card,
 .category-grid article,
@@ -819,7 +883,7 @@ textarea {
   color: var(--white);
   background:
     linear-gradient(100deg, rgba(18, 66, 47, 0.96), rgba(47, 143, 70, 0.84)),
-    url("https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1600&q=80") center/cover;
+    url("images/image5.jpeg") center/cover;
 }
 
 .newsletter-card h2,
@@ -906,7 +970,7 @@ textarea {
   color: var(--white);
   background:
     linear-gradient(90deg, rgba(18, 66, 47, 0.88), rgba(18, 66, 47, 0.46)),
-    url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80") center/cover;
+    url("images/image4.jpeg") center/cover;
 }
 
 .page-hero-content {
@@ -1142,6 +1206,7 @@ textarea {
   .featured-strip,
   .process-gallery,
   .detail-grid,
+  .packaging-showcase,
   .category-dropdowns,
   .category-grid,
   .about-team,
@@ -1157,6 +1222,10 @@ textarea {
   }
 
   .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .packaging-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1231,6 +1300,8 @@ textarea {
   .featured-strip,
   .process-gallery,
   .detail-grid,
+  .packaging-showcase,
+  .packaging-grid,
   .category-dropdowns,
   .category-grid,
   .about-team,
@@ -1248,6 +1319,22 @@ textarea {
 
   .feature-card img {
     aspect-ratio: 16 / 9;
+  }
+
+  .packaging-card,
+  .packaging-card-large,
+  .packaging-card-wide {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .packaging-card,
+  .packaging-card img {
+    min-height: 270px;
+  }
+
+  .packaging-grid {
+    grid-auto-rows: 270px;
   }
 
   .newsletter-form {

@@ -51,12 +51,12 @@ const productPhotoPages = {
 };
 
 const categoryFallbackPhotos = {
-  "Vegetables": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
-  "Fruits": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
-  "Spices": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=80",
-  "Food Grains (Anaj)": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80",
-  "Oil Seeds": "https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&w=900&q=80",
-  "Pulses (Dal)": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=80"
+  "Vegetables": "images/image4.jpeg",
+  "Fruits": "images/image5.jpeg",
+  "Spices": "images/image6.jpeg",
+  "Food Grains (Anaj)": "images/image7.jpeg",
+  "Oil Seeds": "images/iamge2.jpeg",
+  "Pulses (Dal)": "images/image3.jpeg"
 };
 
 const imageCache = new Map();
@@ -70,6 +70,29 @@ async function productImageUrl(name, category) {
   }
 
   const fallback = categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables;
+
+  try {
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=900&titles=${encodeURIComponent(pageTitle)}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Image lookup failed");
+
+    const data = await response.json();
+    const page = Object.values(data.query.pages)[0];
+    const image = page?.thumbnail?.source || fallback;
+    imageCache.set(cacheKey, image);
+    return image;
+  } catch {
+    imageCache.set(cacheKey, fallback);
+    return fallback;
+  }
+}
+
+async function wikipediaImageUrl(pageTitle, fallback) {
+  const cacheKey = `wiki:${pageTitle}`;
+
+  if (imageCache.has(cacheKey)) {
+    return imageCache.get(cacheKey);
+  }
 
   try {
     const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=900&titles=${encodeURIComponent(pageTitle)}`;
@@ -211,6 +234,15 @@ function setupFilters() {
     renderProducts();
   });
   subcategoryFilter.addEventListener("change", renderProducts);
+}
+
+function setupFeaturedRealPhotos() {
+  document.querySelectorAll(".js-real-photo").forEach(async (image) => {
+    const pageTitle = image.dataset.photoPage;
+    if (!pageTitle) return;
+
+    image.src = await wikipediaImageUrl(pageTitle, image.src);
+  });
 }
 
 function updateSubcategoryOptions() {
@@ -435,4 +467,5 @@ document.querySelectorAll(".reveal").forEach((element) => {
 
 setupFilters();
 setupHeroSlider();
+setupFeaturedRealPhotos();
 renderProducts();
