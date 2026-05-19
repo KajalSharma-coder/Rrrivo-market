@@ -6,7 +6,7 @@
   <meta name="description" content="AgriFresh Market delivers fresh farm vegetables, fruits, spices, grains, oil seeds, and pulses directly to your home.">
   <title>AgriFresh Market | Fresh Farm Products Online</title>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -21,6 +21,7 @@
       </button>
       <div class="nav-menu" id="navMenu">
         <a href="index.html">Home</a>
+        <a href="#about">About Us</a>
         <a href="#products">Products</a>
         <a href="contact.html">Contact</a>
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -31,6 +32,15 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-slider" aria-hidden="true">
+        <img class="hero-slide active" src="assets/spices-carousel.jpg" alt="" data-title="Spices Exporter in India">
+        <img class="hero-slide" src="assets/pulses-radial-carousel.jpg" alt="" data-title="Assorted Pulses">
+        <img class="hero-slide" src="assets/pulses-field-carousel.jpg" alt="" data-title="Premium Pulses">
+        <img class="hero-slide" src="assets/farm-products-table-carousel.jpg" alt="" data-title="Farm Fresh Products">
+        <img class="hero-slide" src="assets/farm-table-carousel.jpg" alt="" data-title="Farm Fresh Products">
+        <img class="hero-slide" src="assets/fruits-carousel.jpg" alt="" data-title="Fresh Fruits">
+        <img class="hero-slide" src="assets/vegetables-carousel.jpg" alt="" data-title="Fresh Vegetables">
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
         <span class="eyebrow">Trusted farm marketplace</span>
@@ -38,7 +48,6 @@
         <p>Shop clean, seasonal produce sourced from farmers and delivered with care across your neighborhood.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#products">Shop Products</a>
-          <a class="btn ghost" href="#categories">Explore Categories</a>
         </div>
         <div class="hero-stats" aria-label="Marketplace highlights">
           <span><strong>500+</strong> farm items</span>
@@ -46,13 +55,140 @@
           <span><strong>4.9</strong> customer rating</span>
         </div>
       </div>
+      <button class="hero-arrow hero-prev" type="button" aria-label="Previous slide">‹</button>
+      <button class="hero-arrow hero-next" type="button" aria-label="Next slide">›</button>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">About us</span>
+        <h2 id="about-title">Built For Reliable Farm Trade</h2>
+        <p>Rrrivo Global Trade supports buyers with transparent sourcing, practical market coordination, quality checks, and quick dispatch communication.</p>
+      </div>
+      <div class="about-team reveal">
+        <article class="about-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=420&q=80" alt="Strategic sourcing advisor">
+          <h3>Sourcing & Strategy</h3>
+          <strong>Farm Selection Support</strong>
+          <p>We coordinate with growers and market partners to identify suitable seasonal produce, packing options, and buyer-ready availability.</p>
+        </article>
+        <article class="about-card">
+          <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=420&q=80" alt="Operations coordinator">
+          <h3>Operations</h3>
+          <strong>Packaging & Dispatch</strong>
+          <p>Our process focuses on clean handling, carton or bulk packing choices, timely updates, and smooth loading for local and export orders.</p>
+        </article>
+        <article class="about-card">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=420&q=80" alt="Quality and buyer support specialist">
+          <h3>Buyer Support</h3>
+          <strong>Quality & Communication</strong>
+          <p>Buyers receive product photos, grading details, packing confirmation, and WhatsApp communication before dispatch decisions are finalized.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section export-process" id="export-process" aria-labelledby="export-process-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Export ready workflow</span>
+        <h2 id="export-process-title">From Farm Selection To Container Loading</h2>
+        <p>We manage product inspection, hygienic packaging, clear communication, and dispatch coordination for domestic and export buyers.</p>
+      </div>
+      <div class="process-gallery reveal">
+        <article tabindex="0">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80" alt="Fresh vegetables and farm products">
+          <div class="process-hover-gallery" aria-label="Fresh product photo samples">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80" alt="Assorted fresh vegetables">
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=500&q=80" alt="Fresh fruit assortment">
+            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80" alt="Whole spices">
+            <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=500&q=80" alt="Pulses and grains">
+          </div>
+          <div>
+            <span>01</span>
+            <h3>Fresh Product Photos</h3>
+            <p>Clear product visuals for vegetables, fruits, spices, pulses, grains, and oil seeds.</p>
+          </div>
+        </article>
+        <article tabindex="0">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="Packed cartons for shipment">
+          <div class="process-hover-gallery" aria-label="Packaging photo samples">
+            <img src="assets/packaging-green-beans-crates.jpg" alt="Green beans prepared for packing">
+            <img src="assets/packaging-onion-mesh-sacks.jpg" alt="Onions in mesh packaging">
+            <img src="assets/packaging-onion-burlap-sacks.jpg" alt="Onions packed in market sacks">
+            <img src="assets/packaging-red-onions-basket.jpg" alt="Red onions packed in baskets">
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Packaging Photos</h3>
+            <p>Carton, mesh bag, crate, and bulk packing options shown before dispatch.</p>
+          </div>
+        </article>
+        <article tabindex="0">
+          <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="Farm field with growing crops">
+          <div class="process-hover-gallery" aria-label="Farm and field photo samples">
+            <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=500&q=80" alt="Crop field at sunrise">
+            <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=500&q=80" alt="Green farm field">
+            <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500&q=80" alt="Farm harvesting">
+            <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=500&q=80" alt="Agriculture field rows">
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Farm / Field Photos</h3>
+            <p>Source-level visibility helps buyers understand freshness and harvesting conditions.</p>
+          </div>
+        </article>
+        <article tabindex="0">
+          <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?auto=format&fit=crop&w=900&q=80" alt="Fresh produce quality checking">
+          <div class="process-hover-gallery" aria-label="Quality checking photo samples">
+            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?auto=format&fit=crop&w=500&q=80" alt="Produce inspection">
+            <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=500&q=80" alt="Fresh greens inspection">
+            <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80" alt="Tomato quality check">
+            <img src="https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&w=500&q=80" alt="Cabbage selection">
+          </div>
+          <div>
+            <span>04</span>
+            <h3>Quality Checking Photos</h3>
+            <p>Sorting, grading, and visual checks before packing for buyer confidence.</p>
+          </div>
+        </article>
+        <article tabindex="0">
+          <img src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=900&q=80" alt="Export container loading area">
+          <div class="process-hover-gallery" aria-label="Export container loading photo samples">
+            <img src="assets/export-onion-loading.jpg" alt="Onions loading for export dispatch">
+            <img src="assets/export-potatoes-container.jpg" alt="Potatoes moving through export loading equipment">
+            <img src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=500&q=80" alt="Container loading area">
+            <img src="https://images.unsplash.com/photo-1494412685616-a5d310fbb07d?auto=format&fit=crop&w=500&q=80" alt="Stacked shipping containers">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=500&q=80" alt="Warehouse dispatch">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80" alt="Freight truck dispatch">
+          </div>
+          <div>
+            <span>05</span>
+            <h3>Export Container Loading Photos</h3>
+            <p>Loading updates and dispatch proof for export orders and large shipments.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section business-details" aria-labelledby="business-details-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Buyer support</span>
+        <h2 id="business-details-title">Everything Buyers Need Before Ordering</h2>
+        <p>Structured product details, practical experience, fast communication, and quality standards keep every order transparent.</p>
+      </div>
+      <div class="detail-grid reveal">
+        <article><span>✓</span><h3>Product Details</h3><p>Product name, variety, origin, packing size, quantity, and availability shared clearly.</p></article>
+        <article><span>10+</span><h3>Experience</h3><p>Practical sourcing and dispatch coordination for farm products across seasonal demand.</p></article>
+        <article><span>24h</span><h3>Communication</h3><p>Quick updates on WhatsApp for photos, availability, packing, transport, and order status.</p></article>
+        <article><span>QC</span><h3>Quality Standards</h3><p>Freshness, grading, clean handling, suitable packaging, and buyer-approved dispatch.</p></article>
+        <article><span>IN</span><h3>Company Details</h3><p>Rrrivo Global Trade supplies fresh agricultural products with support from enquiry to delivery.</p></article>
+      </div>
     </section>
 
     <section class="section featured" aria-labelledby="featured-title">
       <div class="section-heading reveal">
         <span class="eyebrow">Handpicked today</span>
         <h2 id="featured-title">Featured Products</h2>
-        <p>Premium farm essentials with transparent prices, ratings, and quick actions.</p>
+        <p>Premium farm essentials with ratings, product details, and quick actions.</p>
       </div>
       <div class="featured-strip reveal">
         <article class="feature-card">
@@ -60,7 +196,7 @@
           <div>
             <span>Best Seller</span>
             <h3>Farm Tomato</h3>
-            <p>Rs. 42 / kg</p>
+            <p>Fresh graded tomatoes for daily use.</p>
           </div>
         </article>
         <article class="feature-card">
@@ -68,7 +204,7 @@
           <div>
             <span>Seasonal</span>
             <h3>Alphonso Mango</h3>
-            <p>Rs. 180 / kg</p>
+            <p>Seasonal mangoes sourced for rich flavor.</p>
           </div>
         </article>
         <article class="feature-card">
@@ -76,7 +212,7 @@
           <div>
             <span>Organic Pick</span>
             <h3>Green Cabbage</h3>
-            <p>Rs. 36 / kg</p>
+            <p>Crisp cabbage selected for freshness.</p>
           </div>
         </article>
       </div>
@@ -137,7 +273,7 @@
         <article>
           <span class="icon">★</span>
           <h3>Fair Pricing</h3>
-          <p>Transparent rates help customers buy better while supporting farming partners.</p>
+          <p>Clear sourcing details help customers buy better while supporting farming partners.</p>
         </article>
       </div>
     </section>
@@ -155,7 +291,7 @@
         </article>
         <article>
           <div class="stars">★★★★★</div>
-          <p>"Good prices, quick delivery, and the fruit quality has been consistently excellent."</p>
+          <p>"Quick delivery, and the fruit quality has been consistently excellent."</p>
           <strong>Rahul M.</strong>
         </article>
         <article>
@@ -171,7 +307,12 @@
         <div>
           <span class="eyebrow">Need help ordering?</span>
           <h2 id="contact-title">Talk to Rrrivo Global Trade</h2>
-          <p>Our support team can help with bulk orders, delivery questions, and product availability.</p>
+          <p>Our support team can help with bulk orders, delivery questions, product photos, packaging updates, and export dispatch details.</p>
+          <div class="contact-points">
+            <div><span>Location</span><p>Gajanand Mall, Sheopur Road, Pratap Nagar, Jaipur, Rajasthan 302033</p></div>
+            <div><span>Phone / WhatsApp</span><p>+91 9636984162</p></div>
+            <div><span>Email</span><p>&nbsp;</p></div>
+          </div>
         </div>
         <a class="btn primary" href="contact.html">Contact Us</a>
       </div>
@@ -202,6 +343,7 @@
       <div>
         <h3>Quick Links</h3>
         <a href="index.html">Home</a>
+        <a href="#about">About Us</a>
         <a href="#products">Products</a>
         <a href="contact.html">Contact</a>
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -209,8 +351,9 @@
       </div>
       <div>
         <h3>Contact</h3>
-        <p>+91 96369 84162</p>
-        <p>digiskymanager@gmail.com</p>
+        <p>+91 9636984162</p>
+        <p>&nbsp;</p>
+        <p>Gajanand Mall, Sheopur Road, Pratap Nagar, Jaipur, Rajasthan 302033</p>
       </div>
       <div>
         <h3>Social</h3>
@@ -225,6 +368,6 @@
     <p class="copyright">© 2026 Rrrivo Global Trade. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

@@ -87,25 +87,12 @@ async function productImageUrl(name, category) {
   }
 }
 
-const priceByCategory = {
-  "Vegetables": [28, 76],
-  "Fruits": [60, 220],
-  "Spices": [95, 360],
-  "Food Grains (Anaj)": [45, 120],
-  "Oil Seeds": [90, 180],
-  "Pulses (Dal)": [80, 165]
-};
-
 const products = Object.entries(categories).flatMap(([category, names]) => {
-  const range = priceByCategory[category];
   return names.map((name, index) => {
-    const price = range[0] + ((index * 17 + category.length * 3) % (range[1] - range[0]));
-    const unit = category === "Spices" || category === "Oil Seeds" || category === "Pulses (Dal)" ? "500g" : "kg";
     return {
       name,
       category,
       subcategory: name,
-      price: `Rs. ${price} / ${unit}`,
       rating: (4.4 + ((index % 6) * 0.1)).toFixed(1),
       image: categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables
     };
@@ -127,6 +114,53 @@ if (navToggle && navMenu) {
       navToggle.setAttribute("aria-expanded", "false");
     }
   });
+}
+
+const heroSlides = Array.from(document.querySelectorAll(".hero-slide"));
+const heroPrev = document.querySelector(".hero-prev");
+const heroNext = document.querySelector(".hero-next");
+let heroSlideIndex = 0;
+let heroSlideTimer = null;
+
+function showHeroSlide(index) {
+  if (!heroSlides.length) return;
+
+  heroSlideIndex = (index + heroSlides.length) % heroSlides.length;
+
+  heroSlides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("active", slideIndex === heroSlideIndex);
+  });
+
+}
+
+function restartHeroSlider() {
+  window.clearInterval(heroSlideTimer);
+  heroSlideTimer = window.setInterval(() => showHeroSlide(heroSlideIndex + 1), 4500);
+}
+
+function setupHeroSlider() {
+  if (!heroSlides.length) return;
+
+  heroSlides.forEach((slide) => {
+    slide.addEventListener("error", () => {
+      const fallback = slide.dataset.fallback;
+      if (!fallback || slide.src === fallback) return;
+      slide.src = fallback;
+    }, { once: true });
+  });
+
+  heroPrev?.addEventListener("click", () => {
+    showHeroSlide(heroSlideIndex - 1);
+    restartHeroSlider();
+  });
+
+  heroNext?.addEventListener("click", () => {
+    showHeroSlide(heroSlideIndex + 1);
+    restartHeroSlider();
+  });
+
+  restartHeroSlider();
+  showHeroSlide(0);
 }
 
 const productGrid = document.querySelector("#productGrid");
@@ -221,7 +255,6 @@ async function renderProducts() {
           <span class="rating">★ ${product.rating}</span>
         </div>
         <h3>${product.name}</h3>
-        <p class="price">${product.price}</p>
         <div class="product-actions">
           <button class="btn primary" type="button" data-action="buy" data-product="${product.name}">Buy Now</button>
         </div>
@@ -255,6 +288,23 @@ document.addEventListener("click", (event) => {
   const product = products.find((item) => item.name === button.dataset.product);
   if (product) {
     openOrderModal(product);
+  }
+});
+
+const processCards = document.querySelectorAll(".process-gallery article");
+
+processCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    processCards.forEach((item) => {
+      if (item !== card) item.classList.remove("show-process-gallery");
+    });
+    card.classList.toggle("show-process-gallery");
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    processCards.forEach((card) => card.classList.remove("show-process-gallery"));
   }
 });
 
@@ -305,7 +355,7 @@ let selectedOrderProduct = null;
 function openOrderModal(product) {
   selectedOrderProduct = product;
   const modal = ensureOrderModal();
-  modal.querySelector("#orderProductName").textContent = `${product.name} - ${product.price}`;
+  modal.querySelector("#orderProductName").textContent = product.name;
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   modal.querySelector("#orderName").focus();
@@ -329,7 +379,6 @@ function sendOrderToWhatsApp() {
     "New product order from website:",
     `Product: ${selectedOrderProduct.name}`,
     `Category: ${selectedOrderProduct.category}`,
-    `Price: ${selectedOrderProduct.price}`,
     `Quantity: ${quantity}`,
     `Customer Name: ${name}`,
     `Customer WhatsApp: ${phone}`,
@@ -385,4 +434,5 @@ document.querySelectorAll(".reveal").forEach((element) => {
 });
 
 setupFilters();
+setupHeroSlider();
 renderProducts();
