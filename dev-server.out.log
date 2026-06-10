@@ -1,0 +1,114 @@
+
+> rrrivo-fresh-farm-fullstack@1.0.0 dev
+> nodemon backend/server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+Server running on port 5000
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+MongoDB connected
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+Attempting local fallback MongoDB at mongodb://127.0.0.1:27017/rrrivo
+MongoDB connected (local fallback)
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+Attempting local fallback MongoDB at mongodb://127.0.0.1:27017/rrrivo
+MongoDB connected (local fallback)
+Admin ready: admin@example.com
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+Attempting local fallback MongoDB at mongodb://127.0.0.1:27017/rrrivo
+MongoDB connected (local fallback)
+Admin ready: admin@example.com
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node backend/server.js`[39m
+Switched Node DNS servers to Google DNS for SRV resolution
+Attempting local fallback MongoDB at mongodb://127.0.0.1:27017/rrrivo
+MongoDB connected (local fallback)
+Admin ready: admin@example.com
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
