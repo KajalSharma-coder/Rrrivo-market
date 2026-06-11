@@ -1,4 +1,4 @@
-const API_BASE = "/api";
+const API_BASE = "https://rrrivo-market.onrender.com/api";
 const fallbackImages = [
   "images/image4.jpeg",
   "images/image5.jpeg",
