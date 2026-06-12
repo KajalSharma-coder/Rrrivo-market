@@ -74,12 +74,23 @@ function fallbackImage(index = 0) {
 }
 
 function productImage(product, index = 0) {
-  return (
+  const img =
     product.image ||
     product.gallery?.[0] ||
-    product.category?.image ||
-    fallbackImage(index)
-  );
+    product.category?.image;
+
+  // No image found
+  if (!img) {
+    return fallbackImage(index);
+  }
+
+  // Already full URL
+  if (img.startsWith("http://") || img.startsWith("https://")) {
+    return img;
+  }
+
+  // Relative path from backend
+  return `https://rrrivo-market.onrender.com${img}`;
 }
 
 function api(path, options = {}) {
