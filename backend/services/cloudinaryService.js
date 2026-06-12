@@ -4,7 +4,8 @@ const streamifier = require("streamifier");
 const cloudinary = require("../config/cloudinary");
 
 const rootDir = path.resolve(__dirname, "..", "..");
-const localUploadRoot = path.join(rootDir, "frontend", "uploads");
+const localUploadRoot = path.join(rootDir, "uploads");
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
 
 function hasCloudinaryConfig() {
   return Boolean(
@@ -12,6 +13,20 @@ function hasCloudinaryConfig() {
       process.env.CLOUDINARY_API_KEY &&
       process.env.CLOUDINARY_API_SECRET,
   );
+}
+
+function validateImage(file) {
+  if (!file) return;
+  if (!String(file.mimetype || "").startsWith("image/")) {
+    const error = new Error("Only image files are allowed.");
+    error.status = 400;
+    throw error;
+  }
+  if (file.size > MAX_UPLOAD_BYTES) {
+    const error = new Error("Image must be 5MB or smaller.");
+    error.status = 400;
+    throw error;
+  }
 }
 
 function extensionFor(file) {
@@ -22,6 +37,7 @@ function extensionFor(file) {
 }
 
 async function saveLocal(file, folder) {
+  validateImage(file);
   const safeFolder = String(folder || "uploads")
     .split("/")
     .map((part) => part.replace(/[^a-z0-9_-]/gi, ""))
@@ -37,6 +53,7 @@ async function saveLocal(file, folder) {
 }
 
 function uploadBuffer(file, folder) {
+  validateImage(file);
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       { folder, resource_type: "image" },
@@ -52,8 +69,19 @@ function uploadBuffer(file, folder) {
 
 async function uploadSingle(file, folder) {
   if (!file) return undefined;
-  if (!hasCloudinaryConfig()) return saveLocal(file, folder);
-  return uploadBuffer(file, folder);
+  try {
+    if (!hasCloudinaryConfig()) return saveLocal(file, folder);
+    return uploadBuffer(file, folder);
+  } catch (error) {
+    console.error("Image upload failed", {
+      filename: file.originalname,
+      mimetype: file.mimetype,
+      size: file.size,
+      folder,
+      message: error.message,
+    });
+    throw error;
+  }
 }
 
 async function uploadMany(files = [], folder) {
