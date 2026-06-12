@@ -38,6 +38,8 @@ app.use(
     maxAge: process.env.NODE_ENV === "production" ? "7d" : 0,
   }),
 );
+
+app.use("/uploads", express.static(path.join(rootDir, "uploads")));
 app.use("/api", apiRoutes);
 app.use("/admin", express.static(path.join(rootDir, "admin")));
 app.use(express.static(path.join(rootDir, "frontend")));
