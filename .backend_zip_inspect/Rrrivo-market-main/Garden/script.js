@@ -1,62 +1,104 @@
 const categories = {
-  "Vegetables": ["Potato", "Onion", "Tomato", "Cabbage", "Cauliflower", "Brinjal", "Okra (Bhindi)", "Peas", "Carrot", "Cucumber"],
-  "Fruits": ["Mango", "Banana", "Apple", "Orange", "Grapes", "Guava", "Pomegranate", "Pineapple", "Watermelon"],
-  "Spices": ["Turmeric (Haldi)", "Coriander (Dhaniya)", "Cumin (Jeera)", "Red Chilli", "Black Pepper", "Ginger", "Garlic", "Fenugreek (Methi)"],
-  "Food Grains (Anaj)": ["Rice (Chawal)", "Wheat (Gehu)", "Maize (Makka)", "Jowar", "Bajra"],
+  Vegetables: [
+    "Potato",
+    "Onion",
+    "Tomato",
+    "Cabbage",
+    "Cauliflower",
+    "Brinjal",
+    "Okra (Bhindi)",
+    "Peas",
+    "Carrot",
+    "Cucumber",
+  ],
+  Fruits: [
+    "Mango",
+    "Banana",
+    "Apple",
+    "Orange",
+    "Grapes",
+    "Guava",
+    "Pomegranate",
+    "Pineapple",
+    "Watermelon",
+  ],
+  Spices: [
+    "Turmeric (Haldi)",
+    "Coriander (Dhaniya)",
+    "Cumin (Jeera)",
+    "Red Chilli",
+    "Black Pepper",
+    "Ginger",
+    "Garlic",
+    "Fenugreek (Methi)",
+  ],
+  "Food Grains (Anaj)": [
+    "Rice (Chawal)",
+    "Wheat (Gehu)",
+    "Maize (Makka)",
+    "Jowar",
+    "Bajra",
+  ],
   "Oil Seeds": ["Mustard", "Groundnut (Moongfali)", "Sesame (Til)"],
-  "Pulses (Dal)": ["Gram / Chana", "Arhar / Toor", "Moong", "Urad", "Masoor"]
+  "Pulses (Dal)": ["Gram / Chana", "Arhar / Toor", "Moong", "Urad", "Masoor"],
 };
 
 const productPhotoPages = {
-  "Potato": "Potato",
-  "Onion": "Onion",
-  "Tomato": "Tomato",
-  "Cabbage": "Cabbage",
-  "Cauliflower": "Cauliflower",
-  "Brinjal": "Eggplant",
+  Potato: "Potato",
+  Onion: "Onion",
+  Tomato: "Tomato",
+  Cabbage: "Cabbage",
+  Cauliflower: "Cauliflower",
+  Brinjal: "Eggplant",
   "Okra (Bhindi)": "Okra",
-  "Peas": "Pea",
-  "Carrot": "Carrot",
-  "Cucumber": "Cucumber",
-  "Mango": "Mango",
-  "Banana": "Banana",
-  "Apple": "Apple",
-  "Orange": "Orange (fruit)",
-  "Grapes": "Grape",
-  "Guava": "Guava",
-  "Pomegranate": "Pomegranate",
-  "Pineapple": "Pineapple",
-  "Watermelon": "Watermelon",
+  Peas: "Pea",
+  Carrot: "Carrot",
+  Cucumber: "Cucumber",
+  Mango: "Mango",
+  Banana: "Banana",
+  Apple: "Apple",
+  Orange: "Orange (fruit)",
+  Grapes: "Grape",
+  Guava: "Guava",
+  Pomegranate: "Pomegranate",
+  Pineapple: "Pineapple",
+  Watermelon: "Watermelon",
   "Turmeric (Haldi)": "Turmeric",
   "Coriander (Dhaniya)": "Coriander",
   "Cumin (Jeera)": "Cumin",
   "Red Chilli": "Chili pepper",
   "Black Pepper": "Black pepper",
-  "Ginger": "Ginger",
-  "Garlic": "Garlic",
+  Ginger: "Ginger",
+  Garlic: "Garlic",
   "Fenugreek (Methi)": "Fenugreek",
   "Rice (Chawal)": "Rice",
   "Wheat (Gehu)": "Wheat",
   "Maize (Makka)": "Maize",
-  "Jowar": "Sorghum",
-  "Bajra": "Pearl millet",
-  "Mustard": "Mustard plant",
+  Jowar: "Sorghum",
+  Bajra: "Pearl millet",
+  Mustard: "Mustard plant",
   "Groundnut (Moongfali)": "Peanut",
   "Sesame (Til)": "Sesame",
   "Gram / Chana": "Chickpea",
   "Arhar / Toor": "Pigeon pea",
-  "Moong": "Mung bean",
-  "Urad": "Vigna mungo",
-  "Masoor": "Lentil"
+  Moong: "Mung bean",
+  Urad: "Vigna mungo",
+  Masoor: "Lentil",
 };
 
 const categoryFallbackPhotos = {
-  "Vegetables": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
-  "Fruits": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
-  "Spices": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=80",
-  "Food Grains (Anaj)": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80",
-  "Oil Seeds": "https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&w=900&q=80",
-  "Pulses (Dal)": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=80"
+  Vegetables:
+    "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
+  Fruits:
+    "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
+  Spices:
+    "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=80",
+  "Food Grains (Anaj)":
+    "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80",
+  "Oil Seeds":
+    "https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&w=900&q=80",
+  "Pulses (Dal)":
+    "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=80",
 };
 
 const imageCache = new Map();
@@ -69,7 +111,8 @@ async function productImageUrl(name, category) {
     return imageCache.get(cacheKey);
   }
 
-  const fallback = categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables;
+  const fallback =
+    categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables;
 
   try {
     const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=900&titles=${encodeURIComponent(pageTitle)}`;
@@ -93,8 +136,9 @@ const products = Object.entries(categories).flatMap(([category, names]) => {
       name,
       category,
       subcategory: name,
-      rating: (4.4 + ((index % 6) * 0.1)).toFixed(1),
-      image: categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables
+      rating: (4.4 + (index % 6) * 0.1).toFixed(1),
+      image:
+        categoryFallbackPhotos[category] || categoryFallbackPhotos.Vegetables,
     };
   });
 });
@@ -130,23 +174,29 @@ function showHeroSlide(index) {
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle("active", slideIndex === heroSlideIndex);
   });
-
 }
 
 function restartHeroSlider() {
   window.clearInterval(heroSlideTimer);
-  heroSlideTimer = window.setInterval(() => showHeroSlide(heroSlideIndex + 1), 4500);
+  heroSlideTimer = window.setInterval(
+    () => showHeroSlide(heroSlideIndex + 1),
+    4500,
+  );
 }
 
 function setupHeroSlider() {
   if (!heroSlides.length) return;
 
   heroSlides.forEach((slide) => {
-    slide.addEventListener("error", () => {
-      const fallback = slide.dataset.fallback;
-      if (!fallback || slide.src === fallback) return;
-      slide.src = fallback;
-    }, { once: true });
+    slide.addEventListener(
+      "error",
+      () => {
+        const fallback = slide.dataset.fallback;
+        if (!fallback || slide.src === fallback) return;
+        slide.src = fallback;
+      },
+      { once: true },
+    );
   });
 
   heroPrev?.addEventListener("click", () => {
@@ -196,7 +246,9 @@ function setupFilters() {
         updateSubcategoryOptions();
         subcategoryFilter.value = name;
         renderProducts();
-        document.querySelector("#products")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document
+          .querySelector("#products")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       list.appendChild(button);
     });
@@ -220,11 +272,23 @@ function updateSubcategoryOptions() {
   subcategoryFilter.innerHTML = "";
   subcategoryFilter.appendChild(option("All Subcategories", "all"));
 
-  const names = selectedCategory === "all"
-    ? Object.values(categories).flat()
-    : categories[selectedCategory];
+  const names =
+    selectedCategory === "all"
+      ? Object.values(categories).flat()
+      : categories[selectedCategory];
 
   names.forEach((name) => subcategoryFilter.appendChild(option(name, name)));
+}
+
+async function loadProducts() {
+  try {
+    const response = await fetch("http://localhost:5000/api/products");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
 
 async function renderProducts() {
@@ -233,20 +297,32 @@ async function renderProducts() {
   const selectedCategory = categoryFilter?.value || "all";
   const selectedSubcategory = subcategoryFilter?.value || "all";
 
+  const products = await loadProducts();
+
   const filtered = products.filter((product) => {
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSubcategory = selectedSubcategory === "all" || product.subcategory === selectedSubcategory;
+    const matchesCategory =
+      selectedCategory === "all" || product.category?.name === selectedCategory;
+
+    const matchesSubcategory =
+      selectedSubcategory === "all" ||
+      product.subcategory?.name === selectedSubcategory;
+
     return matchesCategory && matchesSubcategory;
   });
 
   productGrid.innerHTML = `<p class="empty-state">Loading real product photos...</p>`;
 
-  const productsWithImages = await Promise.all(filtered.map(async (product) => ({
+  const productsWithImages = filtered.map((product) => ({
     ...product,
-    image: await productImageUrl(product.name, product.category)
-  })));
+    image:
+      product.image ||
+      categoryFallbackPhotos[product.category?.name || product.category] ||
+      "images/image1.jpeg",
+  }));
 
-  productGrid.innerHTML = productsWithImages.map((product) => `
+  productGrid.innerHTML = productsWithImages
+    .map(
+      (product) => `
     <article class="product-card">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
       <div class="product-body">
@@ -260,7 +336,9 @@ async function renderProducts() {
         </div>
       </div>
     </article>
-  `).join("");
+  `,
+    )
+    .join("");
 
   if (!productsWithImages.length) {
     productGrid.innerHTML = `<p class="empty-state">No products matched this filter. Try another category.</p>`;
@@ -278,7 +356,10 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add("show");
   window.clearTimeout(showToast.timeout);
-  showToast.timeout = window.setTimeout(() => toast.classList.remove("show"), 2400);
+  showToast.timeout = window.setTimeout(
+    () => toast.classList.remove("show"),
+    2400,
+  );
 }
 
 document.addEventListener("click", (event) => {
@@ -304,7 +385,9 @@ processCards.forEach((card) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    processCards.forEach((card) => card.classList.remove("show-process-gallery"));
+    processCards.forEach((card) =>
+      card.classList.remove("show-process-gallery"),
+    );
   }
 });
 
@@ -372,9 +455,12 @@ function sendOrderToWhatsApp() {
   if (!selectedOrderProduct) return;
 
   const name = document.querySelector("#orderName")?.value.trim() || "Customer";
-  const phone = document.querySelector("#orderPhone")?.value.trim() || "Not provided";
-  const address = document.querySelector("#orderAddress")?.value.trim() || "Not provided";
-  const quantity = document.querySelector("#orderQuantity")?.value.trim() || "Not provided";
+  const phone =
+    document.querySelector("#orderPhone")?.value.trim() || "Not provided";
+  const address =
+    document.querySelector("#orderAddress")?.value.trim() || "Not provided";
+  const quantity =
+    document.querySelector("#orderQuantity")?.value.trim() || "Not provided";
   const whatsappMessage = [
     "New product order from website:",
     `Product: ${selectedOrderProduct.name}`,
@@ -382,7 +468,7 @@ function sendOrderToWhatsApp() {
     `Quantity: ${quantity}`,
     `Customer Name: ${name}`,
     `Customer WhatsApp: ${phone}`,
-    `Delivery Address: ${address}`
+    `Delivery Address: ${address}`,
   ].join("\n");
 
   window.location.href = `https://wa.me/919636984162?text=${encodeURIComponent(whatsappMessage)}`;
@@ -394,15 +480,19 @@ document.querySelectorAll("form").forEach((form) => {
 
     if (form.id === "contactForm") {
       const name = document.querySelector("#name")?.value.trim() || "Customer";
-      const email = document.querySelector("#email")?.value.trim() || "Not provided";
-      const phone = document.querySelector("#phone")?.value.trim() || "Not provided";
-      const message = document.querySelector("#message")?.value.trim() || "I want to know more about RRRIVO Global Trade.";
+      const email =
+        document.querySelector("#email")?.value.trim() || "Not provided";
+      const phone =
+        document.querySelector("#phone")?.value.trim() || "Not provided";
+      const message =
+        document.querySelector("#message")?.value.trim() ||
+        "I want to know more about RRRIVO Global Trade.";
       const whatsappMessage = [
         "New contact request from website:",
         `Name: ${name}`,
         `Email: ${email}`,
         `Phone: ${phone}`,
-        `Message: ${message}`
+        `Message: ${message}`,
       ].join("\n");
 
       window.location.href = `https://wa.me/919636984162?text=${encodeURIComponent(whatsappMessage)}`;
@@ -414,16 +504,20 @@ document.querySelectorAll("form").forEach((form) => {
   });
 });
 
-const observer = "IntersectionObserver" in window
-  ? new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 })
-  : null;
+const observer =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      )
+    : null;
 
 document.querySelectorAll(".reveal").forEach((element) => {
   if (observer) {

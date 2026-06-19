@@ -273,10 +273,13 @@ async function renderProducts() {
 
   productGrid.innerHTML = `<p class="empty-state">Loading real product photos...</p>`;
 
-  const productsWithImages = await Promise.all(filtered.map(async (product) => ({
-    ...product,
-    image: await productImageUrl(product.name, product.category)
-  })));
+const productsWithImages = filtered.map((product) => ({
+  ...product,
+  image:
+    product.image ||
+    categoryFallbackPhotos[product.category?.name || product.category] ||
+    "images/image1.jpeg",
+}));
 
   productGrid.innerHTML = productsWithImages.map((product) => `
     <article class="product-card">
