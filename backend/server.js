@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -15,6 +16,42 @@ const port = process.env.PORT || 5000;
 const rootDir = path.resolve(__dirname, "..");
 const uploadsDir = path.join(rootDir, "uploads");
 const legacyUploadsDir = path.join(rootDir, "frontend", "uploads");
+const uploadRoots = [uploadsDir, legacyUploadsDir];
+
+function sendUploadFile(req, res, next) {
+  let requestedPath;
+
+  try {
+    requestedPath = path.normalize(decodeURIComponent(req.path)).replace(/^(\.\.[/\\])+/, "");
+  } catch {
+    return res.status(400).json({ message: "Invalid upload path" });
+  }
+
+  if (requestedPath.includes("..")) {
+    return res.status(400).json({ message: "Invalid upload path" });
+  }
+
+  const candidates = uploadRoots.map((dir) => path.join(dir, requestedPath));
+  let index = 0;
+
+  function tryNext() {
+    const filePath = candidates[index];
+    index += 1;
+
+    if (!filePath) {
+      return res.status(404).json({ message: "Upload not found" });
+    }
+
+    fs.stat(filePath, (error, stats) => {
+      if (error || !stats.isFile()) return tryNext();
+      return res.sendFile(filePath, {
+        maxAge: process.env.NODE_ENV === "production" ? "7d" : 0,
+      });
+    });
+  }
+
+  tryNext();
+}
 
 app.set("trust proxy", 1);
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -24,22 +61,7 @@ app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 300 }));
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "../uploads"), {
-    fallthrough: true,
-    maxAge: process.env.NODE_ENV === "production" ? "7d" : 0,
-  }),
-);
-app.use(
-  "/uploads",
-  express.static(legacyUploadsDir, {
-    fallthrough: true,
-    maxAge: process.env.NODE_ENV === "production" ? "7d" : 0,
-  }),
-);
-
-app.use("/uploads", express.static(path.join(rootDir, "uploads")));
+app.use("/uploads", sendUploadFile);
 app.use("/api", apiRoutes);
 app.use("/admin", express.static(path.join(rootDir, "admin")));
 app.use(express.static(path.join(rootDir, "frontend")));

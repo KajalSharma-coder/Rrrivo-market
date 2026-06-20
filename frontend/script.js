@@ -1,4 +1,9 @@
-const API_BASE = "https://rrrivo-market.onrender.com/api";
+const API_BASE = (
+  window.RRRIVO_API_BASE ||
+  document.querySelector("meta[name='api-base']")?.content ||
+  `${window.location.origin}/api`
+).replace(/\/$/, "");
+const API_ORIGIN = new URL(API_BASE, window.location.origin).origin;
 const fallbackImages = [
   "images/image4.jpeg",
   "images/image5.jpeg",
@@ -73,24 +78,32 @@ function fallbackImage(index = 0) {
   return fallbackImages[index % fallbackImages.length];
 }
 
+function imageUrl(src, fallback = fallbackImage()) {
+  const value = String(src || "").trim();
+  if (!value) return fallback;
+
+  if (value.startsWith("/uploads/") || value.startsWith("uploads/")) {
+    return new URL(value.replace(/^\/?/, "/"), API_ORIGIN).href;
+  }
+
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.protocol === "http:" || url.protocol === "https:") return url.href;
+  } catch {}
+
+  return new URL(value, window.location.href).href;
+}
+
 function productImage(product, index = 0) {
   const img =
     product.image ||
     product.gallery?.[0] ||
     product.category?.image;
+  return imageUrl(img, fallbackImage(index));
+}
 
-  // No image found
-  if (!img) {
-    return fallbackImage(index);
-  }
-
-  // Already full URL
-  if (img.startsWith("http://") || img.startsWith("https://")) {
-    return img;
-  }
-
-  // Relative path from backend
-  return `https://rrrivo-market.onrender.com${img}`;
+function imageError(index = 0) {
+  return `this.onerror=null;this.src='${escapeHtml(fallbackImage(index))}';`;
 }
 
 function api(path, options = {}) {
@@ -185,9 +198,10 @@ function renderHeroBanners() {
       (banner, index) => `
       <img
         class="hero-slide ${index === 0 ? "active" : ""}"
-        src="${escapeHtml(banner.image)}"
+        src="${escapeHtml(imageUrl(banner.image, fallbackImage(index)))}"
         alt=""
         data-title="${escapeHtml(banner.title)}"
+        onerror="${imageError(index)}"
       />
     `,
     )
@@ -317,7 +331,7 @@ function renderProducts() {
     .map(
       (product, index) => `
       <article class="product-card">
-        <img src="${escapeHtml(productImage(product, index))}" alt="${escapeHtml(product.name)}" loading="lazy">
+        <img src="${escapeHtml(productImage(product, index))}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="${imageError(index)}">
         <div class="product-body">
           <div class="product-meta">
             <span>${escapeHtml(categoryName(product))}</span>
@@ -354,7 +368,7 @@ function renderFeaturedProducts() {
     .map(
       (product, index) => `
       <article class="feature-card">
-        <img src="${escapeHtml(productImage(product, index))}" alt="${escapeHtml(product.name)}" loading="lazy">
+        <img src="${escapeHtml(productImage(product, index))}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="${imageError(index)}">
         <div>
           <span>${product.featured ? "Featured" : "Available"}</span>
           <h3>${escapeHtml(product.name)}</h3>
