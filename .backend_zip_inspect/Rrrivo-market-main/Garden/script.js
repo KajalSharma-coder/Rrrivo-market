@@ -311,14 +311,13 @@ async function renderProducts() {
   });
 
   productGrid.innerHTML = `<p class="empty-state">Loading real product photos...</p>`;
-
-  const productsWithImages = filtered.map((product) => ({
-    ...product,
-    image:
-      product.image ||
-      categoryFallbackPhotos[product.category?.name || product.category] ||
+const productsWithImages = filtered.map((product) => ({
+  ...product,
+  image: product.image
+    ? `${window.location.origin}${product.image}`
+    : categoryFallbackPhotos[product.category?.name || product.category] ||
       "images/image1.jpeg",
-  }));
+}));
 
   productGrid.innerHTML = productsWithImages
     .map(
