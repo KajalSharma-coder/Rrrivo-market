@@ -97,17 +97,16 @@ textarea {
 }
 
 .brand-logo {
-  width: clamp(62px, 7vw, 78px);
-  height: clamp(62px, 7vw, 78px);
-  padding: 2px;
-  border-radius: 8px;
-  background: #07172f;
-  object-fit: contain;
+  width: clamp(58px, 7vw, 76px);
+  height: clamp(58px, 7vw, 76px);
+  border-radius: 50%;
+  background: var(--white);
+  object-fit: cover;
   object-position: center;
+  box-shadow: 0 12px 28px rgba(7, 23, 47, 0.18);
 }
 
 .brand-text {
-  display: none;
   max-width: 190px;
   color: var(--forest);
   font-size: clamp(0.95rem, 1.8vw, 1.18rem);
@@ -447,14 +446,16 @@ textarea {
   .about-row:nth-child(2) .about-media,
   .about-row:nth-child(3) .about-media {
     align-self: center;
-    height: clamp(250px, 24vw, 300px);
+    width: min(100%, 280px);
+    height: auto;
     min-height: 0;
   }
 
   .about-row:nth-child(2) .about-media img,
   .about-row:nth-child(3) .about-media img {
-    height: 100%;
+    height: auto;
     min-height: 0;
+    object-fit: contain;
   }
 }
 
