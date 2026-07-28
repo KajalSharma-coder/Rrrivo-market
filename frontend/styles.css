@@ -97,16 +97,14 @@ textarea {
 }
 
 .brand-logo {
-  --logo-size: clamp(58px, 7vw, 78px);
-  width: var(--logo-size);
-  height: var(--logo-size);
-  border-radius: 50%;
-  object-fit: cover;
+  width: clamp(132px, 16vw, 180px);
+  height: clamp(56px, 7vw, 74px);
+  object-fit: contain;
   object-position: center;
-  box-shadow: 0 12px 28px rgba(7, 23, 47, 0.18);
 }
 
 .brand-text {
+  display: none;
   max-width: 190px;
   color: var(--forest);
   font-size: clamp(0.95rem, 1.8vw, 1.18rem);
@@ -293,10 +291,12 @@ textarea {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
+  padding-right: 86px;
 }
 
 .btn {
   display: inline-flex;
+  flex: 0 0 auto;
   min-height: 46px;
   align-items: center;
   justify-content: center;
@@ -438,6 +438,20 @@ textarea {
 .about-row:nth-child(3) .about-media,
 .about-row:nth-child(3) .about-media img {
   min-height: 300px;
+}
+
+@media (min-width: 981px) {
+  .about-row:nth-child(2),
+  .about-row:nth-child(3) {
+    align-items: stretch;
+  }
+
+  .about-row:nth-child(2) .about-media,
+  .about-row:nth-child(2) .about-media img,
+  .about-row:nth-child(3) .about-media,
+  .about-row:nth-child(3) .about-media img {
+    min-height: 0;
+  }
 }
 
 .about-content {
@@ -1539,7 +1553,8 @@ textarea {
   }
 
   .brand-logo {
-    --logo-size: 58px;
+    width: 118px;
+    height: 54px;
   }
 
   .brand-text {
@@ -1584,6 +1599,10 @@ textarea {
   .hero p,
   .page-hero p {
     font-size: 1rem;
+  }
+
+  .hero-actions {
+    padding-right: 72px;
   }
 
   .section {
