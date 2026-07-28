@@ -446,7 +446,7 @@ textarea {
   .about-row:nth-child(2) .about-media,
   .about-row:nth-child(3) .about-media {
     align-self: center;
-    width: min(100%, 280px);
+    width: 100%;
     height: auto;
     min-height: 0;
   }
@@ -651,7 +651,7 @@ textarea {
 
 .business-details .section-heading,
 .business-details .detail-grid {
-  width: min(1180px, calc(100% - 32px));
+  width: min(980px, calc(100% - 32px));
   margin-right: auto;
   margin-left: auto;
 }
