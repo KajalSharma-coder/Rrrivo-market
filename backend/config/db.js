@@ -7,11 +7,13 @@ async function connectDB() {
     throw new Error("MONGODB_URI is required");
   }
 
-  // If Node is configured to use a localhost DNS resolver (e.g. 127.0.0.1)
-  // that refuses SRV queries, switch to public DNS servers so mongodb+srv works.
+  // If Node is configured to use a loopback DNS resolver that refuses SRV
+  // queries, switch to public DNS servers so mongodb+srv works.
   try {
     const servers = dns.getServers ? dns.getServers() : [];
-    if (servers.includes("127.0.0.1") || servers.includes("::1")) {
+    if (
+      servers.some((server) => server.startsWith("127.") || server === "::1")
+    ) {
       dns.setServers(["8.8.8.8", "8.8.4.4"]);
       console.log("Switched Node DNS servers to Google DNS for SRV resolution");
     }
@@ -28,12 +30,15 @@ async function connectDB() {
   } catch (err) {
     console.warn("Primary MongoDB connection failed:", err.message);
 
-    // If the configured URI is a mongodb+srv Atlas URI, attempt a local fallback for development.
+    // If a fallback URI is configured, use it only for development.
     const isAtlasSrv = String(uri).startsWith("mongodb+srv:");
-    const localFallback =
-      process.env.LOCAL_MONGODB_URI || "mongodb://127.0.0.1:27017/rrrivo";
+    const localFallback = process.env.LOCAL_MONGODB_URI;
 
-    if (isAtlasSrv) {
+    if (
+      isAtlasSrv &&
+      process.env.NODE_ENV !== "production" &&
+      localFallback
+    ) {
       console.log(`Attempting local fallback MongoDB at ${localFallback}`);
       try {
         await mongoose.connect(localFallback);

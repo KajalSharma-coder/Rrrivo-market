@@ -1,6 +1,13 @@
-const API_BASE = "https://rrrivo-market.onrender.com/api";
+const API_BASE = (
+  window.RRRIVO_API_BASE ||
+  document.querySelector("meta[name='api-base']")?.content ||
+  `${window.location.origin}/api`
+).replace(/\/$/, "");
+const API_ORIGIN = new URL(API_BASE, window.location.origin).origin;
 const TOKEN_KEY = "rrrivoAdminToken";
 const ADMIN_KEY = "rrrivoAdmin";
+const PLACEHOLDER_IMAGE =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='120' viewBox='0 0 160 120'%3E%3Crect width='160' height='120' fill='%23eef4ef'/%3E%3Cpath d='M34 84l28-32 22 24 14-16 28 24H34z' fill='%23b7c9bd'/%3E%3Ccircle cx='104' cy='40' r='10' fill='%2393ad9d'/%3E%3C/svg%3E";
 
 const page = $("body").data("page") || "login";
 const state = {
@@ -67,10 +74,24 @@ function badge(active, yes = "Active", no = "Inactive") {
   return `<span class="badge ${active ? "badge-soft" : "text-bg-secondary"}">${active ? yes : no}</span>`;
 }
 
+function imageUrl(src) {
+  const value = String(src || "").trim();
+  if (!value) return PLACEHOLDER_IMAGE;
+
+  if (value.startsWith("/uploads/") || value.startsWith("uploads/")) {
+    return new URL(value.replace(/^\/?/, "/"), API_ORIGIN).href;
+  }
+
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.protocol === "http:" || url.protocol === "https:") return url.href;
+  } catch {}
+
+  return new URL(value, window.location.href).href;
+}
+
 function imageTag(src, alt = "Image") {
-  return src
-    ? `<img class="thumb" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" />`
-    : `<div class="thumb d-grid place-items-center"></div>`;
+  return `<img class="thumb" src="${escapeHtml(imageUrl(src))}" alt="${escapeHtml(alt)}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" />`;
 }
 
 function showAlert(message, type = "success") {
@@ -105,6 +126,7 @@ function request(path, options = {}) {
     method: options.method || "GET",
     data: options.data,
     headers,
+    xhrFields: { withCredentials: true },
     contentType: options.contentType,
     processData: options.processData,
   });
@@ -432,7 +454,7 @@ async function loadBanners() {
         ? state.banners
             .map(
               (b) =>
-                `<div class="col-md-6 col-xl-4"><article class="card h-100"><img class="banner-img" src="${escapeHtml(b.image)}" alt="${escapeHtml(b.title)}" /><div class="card-body"><div class="d-flex justify-content-between gap-2"><h3 class="h6 mb-1">${escapeHtml(b.title)}</h3>${badge(b.active !== false)}</div><p class="text-muted small mb-3">${escapeHtml(b.subtitle)}</p><div class="action-group"><button class="btn btn-outline-primary btn-sm" data-edit-banner="${b._id}"><i class="bi bi-arrow-repeat me-1"></i>Replace</button><button class="btn btn-outline-danger btn-sm" data-delete-resource="banners:${b._id}:banner"><i class="bi bi-trash me-1"></i>Delete</button></div></div></article></div>`,
+                `<div class="col-md-6 col-xl-4"><article class="card h-100"><img class="banner-img" src="${escapeHtml(imageUrl(b.image))}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" /><div class="card-body"><div class="d-flex justify-content-between gap-2"><h3 class="h6 mb-1">${escapeHtml(b.title)}</h3>${badge(b.active !== false)}</div><p class="text-muted small mb-3">${escapeHtml(b.subtitle)}</p><div class="action-group"><button class="btn btn-outline-primary btn-sm" data-edit-banner="${b._id}"><i class="bi bi-arrow-repeat me-1"></i>Replace</button><button class="btn btn-outline-danger btn-sm" data-delete-resource="banners:${b._id}:banner"><i class="bi bi-trash me-1"></i>Delete</button></div></div></article></div>`,
             )
             .join("")
         : `<div class="col-12"><div class="empty-row">No banners found.</div></div>`,

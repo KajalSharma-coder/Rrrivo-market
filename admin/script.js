@@ -126,6 +126,7 @@ function request(path, options = {}) {
     method: options.method || "GET",
     data: options.data,
     headers,
+    xhrFields: { withCredentials: true },
     contentType: options.contentType,
     processData: options.processData,
   });

@@ -17,6 +17,26 @@ const rootDir = path.resolve(__dirname, "..");
 const uploadsDir = path.join(rootDir, "uploads");
 const legacyUploadsDir = path.join(rootDir, "frontend", "uploads");
 const uploadRoots = [uploadsDir, legacyUploadsDir];
+const defaultClientOrigins = [
+  "https://rrrivo360.in",
+  "https://www.rrrivo360.in",
+  "https://rrrivo360.com",
+  "https://www.rrrivo360.com",
+  "https://rrrivo-market-2.onrender.com",
+];
+const envClientOrigins = [
+  process.env.FRONTEND_URL,
+  ...(process.env.CLIENT_ORIGINS || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+];
+const allowedOrigins = new Set([...defaultClientOrigins, ...envClientOrigins]);
+const apiBaseUrl = (
+  process.env.VITE_API_URL ||
+  process.env.API_URL ||
+  "/api"
+).replace(/\/$/, "");
 
 function sendUploadFile(req, res, next) {
   let requestedPath;
@@ -55,7 +75,15 @@ function sendUploadFile(req, res, next) {
 
 app.set("trust proxy", 1);
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.has(origin)) return callback(null, true);
+      return callback(new Error(`CORS blocked origin: ${origin}`));
+    },
+    credentials: true,
+  }),
+);
 app.use(xss());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 300 }));
 app.use(express.json({ limit: "2mb" }));
@@ -63,6 +91,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/uploads", sendUploadFile);
 app.use("/api", apiRoutes);
+app.get("/config.js", (req, res) => {
+  res.type("application/javascript").send(
+    `window.RRRIVO_API_BASE=${JSON.stringify(apiBaseUrl)};`,
+  );
+});
 app.use("/admin", express.static(path.join(rootDir, "admin")));
 app.use(express.static(path.join(rootDir, "frontend")));
 

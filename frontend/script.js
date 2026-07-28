@@ -107,7 +107,10 @@ function imageError(index = 0) {
 }
 
 function api(path, options = {}) {
-  return fetch(`${API_BASE}${path}`, options).then(async (response) => {
+  return fetch(`${API_BASE}${path}`, {
+    credentials: "include",
+    ...options,
+  }).then(async (response) => {
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
       throw new Error(error.message || "API request failed");
